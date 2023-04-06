@@ -71,12 +71,6 @@ const Header = () => {
 			<Navbar
 				bg="light"
 				variant="light"
-				// style={{
-				// 	position: 'fixed',
-				// 	zIndex: '2',
-				// 	width: '100%',
-				// 	marginBottom: '5px',
-				// }}
 			>
 				<Container className="d-flex justify-content-around">
 					<Navbar.Brand>
