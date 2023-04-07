@@ -10,7 +10,7 @@ const Suggestion = ({ category, id }) => {
 		(state) => state.product?.filter?.products,
 	);
 	const navigate = useNavigate();
-	console.log(suggestionProduct);
+	// console.log(suggestionProduct);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(selectCategory(category));

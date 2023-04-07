@@ -35,7 +35,7 @@ export const selectCategory = createAsyncThunk(
 			const res = await axios.get(
 				`https://dummyjson.com/products/category/${cat}`,
 			);
-			console.log(res.data);
+			// console.log(res.data);
 			return res.data;
 		} catch (err) {
 			console.error(err.message);

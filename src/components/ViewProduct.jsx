@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
 	ADD_TO_CART,
 	REMOVE_FROM_CART,
@@ -17,6 +17,7 @@ const ViewProduct = () => {
 	const cart = useSelector((state) => state.product?.cart);
 	const currentProduct = useSelector((state) => state.product?.singleProduct);
 	const emailId = localStorage.getItem('email');
+	const navigate=useNavigate();
 	// console.log(currentProduct);
 	useEffect(() => {
 		dispatch(viewProduct(id));
@@ -84,6 +85,9 @@ const ViewProduct = () => {
 									style={{
 										fontSize: '0.5rem',
 									}}
+									onClick={() =>
+										navigate('/login')
+									}
 								>
 									Log In to Add
 								</Button>

@@ -17,7 +17,7 @@ const Products = () => {
 	);
 	const dispatch = useDispatch();
 
-	console.log(filterProduct);
+	// console.log(filterProduct);
 	const handleView = (id) => {
 		navigate(`/view/${id}`);
 	};
