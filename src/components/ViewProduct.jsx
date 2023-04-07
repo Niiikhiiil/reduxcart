@@ -17,7 +17,7 @@ const ViewProduct = () => {
 	const cart = useSelector((state) => state.product?.cart);
 	const currentProduct = useSelector((state) => state.product?.singleProduct);
 	const emailId = localStorage.getItem('email');
-	const navigate=useNavigate();
+	const navigate = useNavigate();
 	// console.log(currentProduct);
 	useEffect(() => {
 		dispatch(viewProduct(id));
@@ -85,9 +85,7 @@ const ViewProduct = () => {
 									style={{
 										fontSize: '0.5rem',
 									}}
-									onClick={() =>
-										navigate('/login')
-									}
+									onClick={() => navigate('/login')}
 								>
 									Log In to Add
 								</Button>
