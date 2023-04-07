@@ -2,13 +2,13 @@ import { nanoid } from '@reduxjs/toolkit';
 import React, { useState } from 'react';
 import { Alert, Button, Col, Row, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BUY_ALL } from '../redux/userSlice';
 import { EMPTY_CART } from '../redux/productSlice';
 
 const CheckOut = () => {
 	const [show, setShow] = useState(false);
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const cart = useSelector((state) => state.product?.cart);
 	const total = useSelector((state) => state.product?.total);
 	const dispatch = useDispatch();

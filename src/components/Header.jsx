@@ -44,6 +44,13 @@ const Header = () => {
 		}
 	}, [dispatch, emailId, users]);
 
+	useEffect(() => {
+		window.addEventListener('beforeunload', handleLogOut);
+		return () => {
+			window.removeEventListener('beforeunload', handleLogOut);
+		};
+	}, []);
+
 	const handleLogOut = () => {
 		dispatch(LOG_OUT());
 		navigate('/');

@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { viewProduct } from '../redux/productSlice';
+import {
+	ADD_TO_CART,
+	REMOVE_FROM_CART,
+	viewProduct,
+} from '../redux/productSlice';
 import { Badge, Button, Card, Carousel, Col, Row } from 'react-bootstrap';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
 import { nanoid } from '@reduxjs/toolkit';
@@ -10,11 +14,21 @@ import Suggestion from './Suggestion';
 const ViewProduct = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
+	const cart = useSelector((state) => state.product?.cart);
 	const currentProduct = useSelector((state) => state.product?.singleProduct);
-	console.log(currentProduct);
+	const emailId = localStorage.getItem('email');
+	// console.log(currentProduct);
 	useEffect(() => {
 		dispatch(viewProduct(id));
 	}, [dispatch, id]);
+
+	const handleAdd = (addp) => {
+		dispatch(ADD_TO_CART({ p: addp, email: emailId }));
+	};
+	const handleremove = (rp) => {
+		dispatch(REMOVE_FROM_CART({ prod: rp, email: emailId }));
+	};
+
 	return (
 		<>
 			<Card
@@ -32,7 +46,38 @@ const ViewProduct = () => {
 							className="d-flex justify-content-end"
 						>
 							{localStorage.getItem('email') ? (
-								<Button>Add</Button>
+								<>
+									{cart.some(
+										(p) => p.id === currentProduct.id,
+									) ? (
+										<Button
+											variant="danger"
+											style={{
+												minWidth: '80px',
+											}}
+											onClick={() =>
+												handleremove(currentProduct)
+											}
+										>
+											Remove
+										</Button>
+									) : (
+										<Button
+											style={{
+												width: '100px',
+											}}
+											variant="primary"
+											disabled={!currentProduct?.stock}
+											onClick={() =>
+												handleAdd(currentProduct)
+											}
+										>
+											{!currentProduct?.stock
+												? 'Out of Stock'
+												: 'Add'}
+										</Button>
+									)}
+								</>
 							) : (
 								<Button
 									variant="outline-primary"

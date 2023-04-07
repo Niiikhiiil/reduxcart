@@ -18,7 +18,7 @@ const Suggestion = ({ category, id }) => {
 
 	const handleView = (sid) => {
 		navigate(`/view/${sid}`);
-		suggestionProduct = suggestionProduct?.filter((csp) => csp.id != id);
+		suggestionProduct = suggestionProduct?.filter((csp) => csp.id !== id);
 	};
 
 	return (
